@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Privacy Policy - Instead</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+
+  <p><strong>Effective date:</strong> June 18, 2026</p>
+
+  <p>
+    This Privacy Policy explains how <strong>ALI OGULCAN DULGER</strong>, a sole proprietorship based in Turkey,
+    provides and handles information in connection with the mobile application <strong>Instead</strong>.
+  </p>
+
+  <p>
+    Instead is a mobile app designed to turn a user’s screen time into ideas for what they could do instead,
+    based on interests the user selects. Some app functionality works on the user’s device. Separately, if a
+    user chooses to join the waitlist, certain form information is sent to our backend infrastructure provider.
+  </p>
+
+  <h2>1. Who provides the app</h2>
+
+  <p>
+    Instead is provided by <strong>ALI OGULCAN DULGER</strong>. References to “we”, “us”, and “our” mean
+    ALI OGULCAN DULGER.
+  </p>
+
+  <p>
+    Contact email: <a href="mailto:ogulcan.dulger@gmail.com">ogulcan.dulger@gmail.com</a>
+  </p>
+
+  <h2>2. Information we collect directly from you</h2>
+
+  <p>
+    If you submit the waitlist form, we currently collect the information you choose to submit in that form:
+  </p>
+
+  <ul>
+    <li>Email address</li>
+    <li>Goals</li>
+    <li>Duration</li>
+    <li>Country, if provided</li>
+    <li>Age, if provided</li>
+    <li>Sex, if provided</li>
+  </ul>
+
+  <p>
+    Email, goals, and duration are required by the current form. Age is optional, but if entered it must pass
+    the app’s current validation range. Country and sex are currently optional.
+  </p>
+
+  <h2>3. Information used locally on your device</h2>
+
+  <p>
+    Instead uses information on your device to provide its core experience. This includes:
+  </p>
+
+  <ul>
+    <li>Selected interest IDs</li>
+    <li>Seen activity IDs</li>
+    <li>Whether the device has submitted before</li>
+    <li>Submission counts by day</li>
+    <li>The current hourly activity deck</li>
+  </ul>
+
+  <p>
+    The app’s activity suggestion content is bundled locally in the app and is not pulled from a remote content
+    management system in the current version.
+  </p>
+
+  <h2>4. Screen-time and app-usage information</h2>
+
+  <p>
+    On Android, Instead may access aggregated app-usage statistics made available by the operating system for
+    a selected time range. Based on the current implementation, this native access can include package name,
+    app display name, total foreground time, and last time used.
+  </p>
+
+  <p>
+    The current app logic mainly uses total screen-time minutes for “today” to drive the experience.
+  </p>
+
+  <p>
+    On iOS, Instead may request Family Controls authorization, but direct raw screen-time usage export is not
+    currently implemented. Screen-time functionality on iOS may be limited by Apple permissions, approvals,
+    device settings, regional availability, and platform restrictions.
+  </p>
+
+  <p>
+    If automatic access is unavailable, unsupported, declined, or not granted, users can manually enter screen
+    time instead.
+  </p>
+
+  <h2>5. Manual screen-time entry</h2>
+
+  <p>
+    Manual screen-time entry is temporary runtime state. It is not persisted in AsyncStorage and expires at the
+    next top of the hour.
+  </p>
+
+  <h2>6. What is sent remotely</h2>
+
+  <p>
+    Based on the current app implementation, the only confirmed outbound network call is a POST request to
+    Supabase REST for waitlist submission.
+  </p>
+
+  <p>
+    The data sent remotely through that waitlist submission is:
+  </p>
+
+  <ul>
+    <li>Email</li>
+    <li>Goals</li>
+    <li>Duration</li>
+    <li>Country, if provided</li>
+    <li>Age, if provided</li>
+    <li>Sex, if provided</li>
+  </ul>
+
+  <p>
+    Screen-time and app-usage information used for the app experience is intended to be handled locally on the
+    device in the current version. Waitlist form data is separate and is sent remotely when submitted.
+  </p>
+
+  <h2>7. What stays on device</h2>
+
+  <p>
+    The following items are currently intended to remain on the device unless you delete the app, clear app
+    storage, or the app replaces them through normal operation:
+  </p>
+
+  <ul>
+    <li><code>instead:selected-interest-ids</code></li>
+    <li><code>instead:seen-activity-ids</code></li>
+    <li><code>instead:has-submitted</code></li>
+    <li><code>instead:submission-counts</code></li>
+    <li><code>instead:hourly-deck</code></li>
+  </ul>
+
+  <p>
+    Manual screen-time entry is temporary and expires automatically.
+  </p>
+
+  <h2>8. How we use information</h2>
+
+  <p>
+    We use locally stored information to run the app experience, including selecting and rotating activity
+    suggestions, remembering interests, avoiding immediate repeats, and limiting waitlist submissions on a
+    per-device daily basis.
+  </p>
+
+  <p>
+    We use submitted waitlist information to manage the waitlist, understand broad user interests and expected
+    usage patterns, plan launch and product decisions, respond to user inquiries, and send app-related
+    communications.
+  </p>
+
+  <h2>9. Communications and waitlist emails</h2>
+
+  <p>
+    If you submit the waitlist form, we may contact you at the email address you provide about the waitlist,
+    launch, availability, and related updates about Instead.
+  </p>
+
+  <p>
+    Where permitted by applicable law, these communications may occasionally include promotional or marketing
+    content relating to Instead or closely related product updates.
+  </p>
+
+  <p>
+    You can opt out of non-essential emails at any time by using the unsubscribe mechanism provided in the
+    message, if available, or by contacting us at
+    <a href="mailto:ogulcan.dulger@gmail.com">ogulcan.dulger@gmail.com</a>.
+  </p>
+
+  <h2>10. Third-party services and infrastructure</h2>
+
+  <p>
+    We currently use Supabase as backend infrastructure for waitlist form submissions. Supabase acts as a
+    service provider or infrastructure provider for receiving, storing, and processing form submissions that
+    users choose to send through the app.
+  </p>
+
+  <h2>11. How we share information</h2>
+
+  <p>
+    We do not sell personal information collected through the app for money.
+  </p>
+
+  <p>
+    We share waitlist form data with Supabase as needed to receive, store, and process that data on our behalf.
+  </p>
+
+  <p>
+    We may also disclose information if reasonably necessary to comply with applicable law, regulation, legal
+    process, or enforceable governmental request; to protect our rights, users, or the public; or in connection
+    with a business transfer involving the app, such as a sale of assets, merger, or reorganization.
+  </p>
+
+  <h2>12. Data retention</h2>
+
+  <p>
+    We retain waitlist submission data for as long as reasonably necessary to operate the waitlist, communicate
+    about launch and related product updates, maintain appropriate business records, resolve disputes, enforce
+    our rights, and comply with legal obligations.
+  </p>
+
+  <p>
+    Locally stored app data remains on the device until it is removed by the user, replaced by app logic, or
+    removed when the app is uninstalled or local app storage is cleared.
+  </p>
+
+  <p>
+    Temporary manual screen-time entry expires automatically at the next top of the hour.
+  </p>
+
+  <h2>13. Access, correction, and deletion requests</h2>
+
+  <p>
+    You may request access to, correction of, or deletion of waitlist data that you submitted to us by emailing
+    <a href="mailto:ogulcan.dulger@gmail.com">ogulcan.dulger@gmail.com</a>.
+  </p>
+
+  <p>
+    We may ask for information necessary to verify your identity before acting on a request.
+  </p>
+
+  <p>
+    If you want to remove locally stored app data on your device, you can generally do so by clearing the app’s
+    local storage or uninstalling the app, subject to your device and operating system controls.
+  </p>
+
+  <h2>14. International users</h2>
+
+  <p>
+    Instead is intended to be usable worldwide. We are based in Turkey, and information you submit may be
+    processed in Turkey and in other countries where our service providers operate infrastructure.
+  </p>
+
+  <p>
+    If you use the app from outside Turkey, you understand that your information may be transferred to and
+    processed in countries that may have data protection laws different from those in your country.
+  </p>
+
+  <h2>15. Children and age-related use</h2>
+
+  <p>
+    Instead is not currently intended for users under 18. The app’s current waitlist age validation also reflects
+    an adult-oriented setup.
+  </p>
+
+  <p>
+    We do not knowingly seek to collect waitlist personal information from children under 18 through the current
+    version. If you believe a person under 18 has submitted personal information through the app, contact us and
+    we will review and, where appropriate, delete the information.
+  </p>
+
+  <p>
+    If we later decide to permit younger users, we may change the app, its age and consent flow, and this Privacy
+    Policy.
+  </p>
+
+  <h2>16. Security</h2>
+
+  <p>
+    We use reasonable technical and organizational measures designed to protect information under our control.
+    However, no method of electronic storage or transmission is completely secure, and we cannot guarantee
+    absolute security.
+  </p>
+
+  <h2>17. Changes to this Privacy Policy</h2>
+
+  <p>
+    We may update this Privacy Policy from time to time. If we make a material change, we will update the
+    effective date above and may provide additional notice where appropriate under applicable law or platform
+    requirements.
+  </p>
+
+  <h2>18. Contact details</h2>
+
+  <p>
+    For privacy questions, requests, or complaints, contact:
+  </p>
+
+  <p>
+    <strong>ALI OGULCAN DULGER</strong><br>
+    Email: <a href="mailto:ogulcan.dulger@gmail.com">ogulcan.dulger@gmail.com</a>
+  </p>
+</body>
+</html>
