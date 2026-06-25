@@ -16,15 +16,15 @@
   </p>
 
   <p>
-    Instead is a mobile app designed to turn a user’s screen time into ideas for what they could do instead,
-    based on interests the user selects. Some app functionality works on the user’s device. Separately, if a
+    Instead is a mobile app designed to turn a user's screen time into ideas for what they could do instead,
+    based on interests the user selects. Some app functionality works on the user's device. Separately, if a
     user chooses to join the waitlist, certain form information is sent to our backend infrastructure provider.
   </p>
 
   <h2>1. Who provides the app</h2>
 
   <p>
-    Instead is provided by <strong>ALI OGULCAN DULGER</strong>. References to “we”, “us”, and “our” mean
+    Instead is provided by <strong>ALI OGULCAN DULGER</strong>. References to "we", "us", and "our" mean
     ALI OGULCAN DULGER.
   </p>
 
@@ -49,25 +49,30 @@
 
   <p>
     Email, goals, and duration are required by the current form. Age is optional, but if entered it must pass
-    the app’s current validation range. Country and sex are currently optional.
+    the app's current validation range. Country and sex are currently optional.
   </p>
 
   <h2>3. Information used locally on your device</h2>
 
   <p>
-    Instead uses information on your device to provide its core experience. This includes:
+    Instead uses information stored locally on your device to provide its core experience. In the current version, this may include:
   </p>
 
   <ul>
     <li>Selected interest IDs</li>
     <li>Seen activity IDs</li>
-    <li>Whether the device has submitted before</li>
+    <li>Whether the device has submitted the waitlist form before</li>
     <li>Submission counts by day</li>
     <li>The current hourly activity deck</li>
+    <li>A local submission-history record containing the goals and duration fields from waitlist submissions, so those entries can be shown again inside the app on that same device</li>
   </ul>
 
   <p>
-    The app’s activity suggestion content is bundled locally in the app and is not pulled from a remote content
+    In the current version, the app does not intentionally keep local copies of waitlist email, country, age, or sex fields for that submission-history display.
+  </p>
+
+  <p>
+    The app's activity suggestion content is bundled locally in the app and is not pulled from a remote content
     management system in the current version.
   </p>
 
@@ -80,7 +85,7 @@
   </p>
 
   <p>
-    The current app logic mainly uses total screen-time minutes for “today” to drive the experience.
+    The current app logic mainly uses total screen-time minutes for "today" to drive the experience.
   </p>
 
   <p>
@@ -104,8 +109,7 @@
   <h2>6. What is sent remotely</h2>
 
   <p>
-    Based on the current app implementation, the only confirmed outbound network call is a POST request to
-    Supabase REST for waitlist submission.
+    Based on the current app implementation, the confirmed outbound network call for waitlist data is a POST request to Supabase REST for waitlist submission.
   </p>
 
   <p>
@@ -123,7 +127,11 @@
 
   <p>
     Screen-time and app-usage information used for the app experience is intended to be handled locally on the
-    device in the current version. Waitlist form data is separate and is sent remotely when submitted.
+    device in the current version.
+  </p>
+
+  <p>
+    A limited local copy of the submitted goals and duration fields may also remain on the device after submission so the app can display submission history on that device. That local copy is separate from the remote waitlist record.
   </p>
 
   <h2>7. What stays on device</h2>
@@ -137,12 +145,24 @@
     <li><code>instead:selected-interest-ids</code></li>
     <li><code>instead:seen-activity-ids</code></li>
     <li><code>instead:has-submitted</code></li>
+    <li><code>instead:submitted-goals</code></li>
+  </ul>
+
+  <p>
+    This local record is used for submission history in the app and currently stores the submitted goals and duration values, together with related local metadata needed to display those entries.
+  </p>
+
+  <ul>
     <li><code>instead:submission-counts</code></li>
     <li><code>instead:hourly-deck</code></li>
   </ul>
 
   <p>
     Manual screen-time entry is temporary and expires automatically.
+  </p>
+
+  <p>
+    In the current Android configuration, app-local data is not intended to be backed up through Android's automatic backup feature.
   </p>
 
   <h2>8. How we use information</h2>
@@ -230,7 +250,7 @@
   </p>
 
   <p>
-    If you want to remove locally stored app data on your device, you can generally do so by clearing the app’s
+    If you want to remove locally stored app data on your device, you can generally do so by clearing the app's
     local storage or uninstalling the app, subject to your device and operating system controls.
   </p>
 
@@ -249,7 +269,7 @@
   <h2>15. Children and age-related use</h2>
 
   <p>
-    Instead is not currently intended for users under 18. The app’s current waitlist age validation also reflects
+    Instead is not currently intended for users under 18. The app's current waitlist age validation also reflects
     an adult-oriented setup.
   </p>
 
