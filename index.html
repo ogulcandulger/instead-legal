@@ -1,15 +1,941 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Instead Legal Documents</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <h1>Instead Legal Documents</h1>
-  <ul>
-    <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-    <li><a href="./terms.html">Terms of Use</a></li>
-  </ul>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Instead | Turn Screen Time Into Better Choices</title>
+    <meta
+      name="description"
+      content="Instead helps users reduce screen time by suggesting alternative activities based on their interests."
+    />
+    <style>
+      :root {
+        --color-canvas: #090b10;
+        --color-canvas-elevated: #11141c;
+        --color-canvas-muted: #171b25;
+        --color-surface: #121721;
+        --color-surface-emphasized: #1a2130;
+        --color-surface-accent: #10211f;
+        --color-border-subtle: #293142;
+        --color-border-accent: #294b47;
+        --color-border-chrome: rgba(255, 255, 255, 0.1);
+        --color-text-primary: #f6f1e8;
+        --color-text-secondary: #a7b0c2;
+        --color-text-emphasized: rgba(246, 241, 232, 0.82);
+        --color-text-accent: #7fd1b9;
+        --color-text-accent-subtle: #5c9f8e;
+        --color-action-primary: #7fd1b9;
+        --color-action-primary-pressed: #6ab7a2;
+        --shadow-card: 0 12px 24px rgba(0, 0, 0, 0.28);
+        --radius-control: 18px;
+        --radius-panel: 30px;
+        --radius-pill: 999px;
+        --space-1: 4px;
+        --space-2: 8px;
+        --space-3: 12px;
+        --space-4: 16px;
+        --space-5: 20px;
+        --space-6: 24px;
+        --space-7: 32px;
+        --space-8: 40px;
+        --content-width: 1120px;
+        --font-ui: "Segoe UI", "SF Pro Display", "Helvetica Neue", system-ui,
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-ui);
+        color: var(--color-text-primary);
+        background:
+          radial-gradient(circle at top left, rgba(127, 209, 185, 0.12), transparent 24rem),
+          radial-gradient(circle at 85% 12%, rgba(127, 209, 185, 0.08), transparent 18rem),
+          linear-gradient(180deg, #090b10 0%, #0c1016 100%);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-shell::before,
+      .page-shell::after {
+        content: "";
+        position: absolute;
+        width: 22rem;
+        height: 22rem;
+        border-radius: 50%;
+        filter: blur(70px);
+        pointer-events: none;
+        opacity: 0.22;
+      }
+
+      .page-shell::before {
+        top: -6rem;
+        left: -10rem;
+        background: #10211f;
+      }
+
+      .page-shell::after {
+        right: -10rem;
+        bottom: 12rem;
+        background: #143124;
+      }
+
+      .container {
+        width: min(100% - 40px, var(--content-width));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(18px);
+        background: rgba(9, 11, 16, 0.72);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-4);
+        padding: 18px 0;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand__name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .header-links {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+      }
+
+      .header-links a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .header-links a:hover,
+      .header-links a:focus-visible {
+        color: var(--color-text-primary);
+      }
+
+      .hero {
+        padding: 68px 0 32px;
+      }
+
+      .hero__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: 44px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: var(--space-5);
+        padding: 10px 16px;
+        border: 1px solid var(--color-border-accent);
+        border-radius: var(--radius-pill);
+        background: rgba(16, 33, 31, 0.82);
+        color: var(--color-text-accent);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--color-action-primary);
+        box-shadow: 0 0 18px rgba(127, 209, 185, 0.45);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .hero h1 {
+        max-width: 12ch;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+      }
+
+      .hero__lede {
+        max-width: 36rem;
+        margin-top: var(--space-5);
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        line-height: 1.6;
+        color: var(--color-text-emphasized);
+      }
+
+      .hero__summary {
+        max-width: 34rem;
+        margin-top: var(--space-5);
+        color: var(--color-text-secondary);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+        margin-top: var(--space-7);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 22px;
+        border-radius: var(--radius-pill);
+        text-decoration: none;
+        font-weight: 700;
+        transition:
+          background-color 160ms ease,
+          color 160ms ease,
+          border-color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-1px);
+      }
+
+      .button--primary {
+        background: var(--color-action-primary);
+        color: var(--color-canvas);
+      }
+
+      .button--primary:hover,
+      .button--primary:focus-visible {
+        background: var(--color-action-primary-pressed);
+      }
+
+      .button--secondary {
+        border: 1px solid var(--color-border-subtle);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--color-text-primary);
+      }
+
+      .hero__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+        margin-top: var(--space-6);
+      }
+
+      .meta-chip {
+        padding: 10px 14px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--color-border-chrome);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--color-text-secondary);
+        font-size: 0.92rem;
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 520px;
+      }
+
+      .hex-cluster {
+        position: absolute;
+        top: 12px;
+        right: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 92px);
+        gap: 14px;
+        opacity: 0.9;
+      }
+
+      .hex {
+        width: 92px;
+        aspect-ratio: 1 / 1.14;
+        clip-path: polygon(50% 0%, 94% 25%, 94% 75%, 50% 100%, 6% 75%, 6% 25%);
+        background: var(--color-surface-emphasized);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      .hex:nth-child(2),
+      .hex:nth-child(5) {
+        background: var(--color-action-primary);
+      }
+
+      .device-frame {
+        position: absolute;
+        right: 24px;
+        bottom: 0;
+        width: min(100%, 330px);
+        padding: 18px;
+        border-radius: 42px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.09),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      }
+
+      .device-frame::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        width: 34%;
+        height: 18px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: rgba(9, 11, 16, 0.9);
+      }
+
+      .device-frame img {
+        width: 100%;
+        border-radius: 28px;
+      }
+
+      .floating-card {
+        position: absolute;
+        left: 0;
+        bottom: 68px;
+        max-width: 270px;
+        padding: 20px;
+        border-radius: 24px;
+        background: rgba(18, 23, 33, 0.92);
+        border: 1px solid var(--color-border-subtle);
+        box-shadow: var(--shadow-card);
+      }
+
+      .floating-card strong {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--color-text-primary);
+        font-size: 1rem;
+      }
+
+      .floating-card p {
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      .section {
+        padding: 32px 0;
+      }
+
+      .section--spaced {
+        padding: 56px 0;
+      }
+
+      .section-heading {
+        max-width: 40rem;
+        margin-bottom: 26px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(2rem, 5vw, 3.1rem);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+      }
+
+      .section-heading p {
+        margin-top: var(--space-4);
+        color: var(--color-text-secondary);
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      .how-grid,
+      .feature-grid,
+      .support-grid,
+      .footer-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .how-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .support-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      }
+
+      .card {
+        padding: 26px;
+        border-radius: var(--radius-panel);
+        border: 1px solid var(--color-border-subtle);
+        background: rgba(26, 33, 48, 0.82);
+        box-shadow: var(--shadow-card);
+      }
+
+      .card--accent {
+        background:
+          linear-gradient(180deg, rgba(16, 33, 31, 0.96), rgba(18, 23, 33, 0.92));
+        border-color: var(--color-border-accent);
+      }
+
+      .step-index {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        margin-bottom: 18px;
+        border-radius: 50%;
+        background: rgba(127, 209, 185, 0.16);
+        color: var(--color-text-accent);
+        font-weight: 700;
+      }
+
+      .card h3 {
+        font-size: 1.4rem;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+      }
+
+      .card p {
+        margin-top: 12px;
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+      }
+
+      .feature-card__tag {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: var(--color-text-accent-subtle);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .cta-panel {
+        padding: clamp(28px, 5vw, 44px);
+        border-radius: 34px;
+        border: 1px solid var(--color-border-accent);
+        background:
+          radial-gradient(circle at top right, rgba(127, 209, 185, 0.12), transparent 12rem),
+          linear-gradient(180deg, rgba(16, 33, 31, 0.96), rgba(12, 16, 22, 0.96));
+        box-shadow: var(--shadow-card);
+      }
+
+      .cta-panel h2 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+      }
+
+      .cta-panel p {
+        max-width: 38rem;
+        margin-top: 14px;
+        color: var(--color-text-emphasized);
+        line-height: 1.7;
+      }
+
+      .cta-panel__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+        margin-top: var(--space-6);
+      }
+
+      .cta-note {
+        margin-top: 18px;
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .link-list a {
+        color: var(--color-text-accent);
+        text-underline-offset: 3px;
+      }
+
+      .site-footer {
+        padding: 32px 0 44px;
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-copy {
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .footer-links a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover,
+      .footer-links a:focus-visible {
+        color: var(--color-text-primary);
+      }
+
+      @media (max-width: 960px) {
+        .hero {
+          padding-top: 48px;
+        }
+
+        .hero__grid,
+        .support-grid,
+        .how-grid,
+        .feature-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-visual {
+          min-height: 620px;
+        }
+
+        .hex-cluster {
+          right: 50%;
+          transform: translateX(50%);
+        }
+
+        .device-frame {
+          right: 50%;
+          transform: translateX(50%);
+        }
+
+        .floating-card {
+          left: 50%;
+          bottom: 24px;
+          transform: translateX(-50%);
+          width: min(100%, 300px);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 24px, var(--content-width));
+        }
+
+        .site-header__inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .hero {
+          padding-top: 34px;
+        }
+
+        .hero__actions,
+        .cta-panel__actions,
+        .link-list {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .hero__meta {
+          flex-direction: column;
+        }
+
+        .hero-visual {
+          min-height: 560px;
+        }
+
+        .hex-cluster {
+          grid-template-columns: repeat(3, 68px);
+          gap: 10px;
+          top: 0;
+        }
+
+        .hex {
+          width: 68px;
+        }
+
+        .device-frame {
+          width: min(100%, 286px);
+          padding: 14px;
+          border-radius: 32px;
+        }
+
+        .device-frame img {
+          border-radius: 22px;
+        }
+
+        .floating-card {
+          position: relative;
+          left: auto;
+          bottom: auto;
+          transform: none;
+          margin: 16px auto 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="brand" href="#top" aria-label="Instead home">
+            <img
+              src="./assets/images/splash-icon.png"
+              alt="Instead logo"
+              width="42"
+              height="42"
+            />
+            <span class="brand__name">Instead</span>
+          </a>
+          <nav class="header-links" aria-label="Primary">
+            <a href="#how-it-helps">How it helps</a>
+            <a href="#features">Features</a>
+            <a href="#support">Support</a>
+            <a
+              href="https://ogulcandulger.github.io/instead-legal/privacy-policy.html"
+              >Privacy</a
+            >
+            <a href="https://ogulcandulger.github.io/instead-legal/terms.html"
+              >Terms</a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="container hero__grid">
+            <div>
+              <div class="eyebrow">Official landing page</div>
+              <h1>Turn screen time into better choices.</h1>
+              <p class="hero__lede">
+                Instead helps users reduce screen time by suggesting alternative
+                activities based on their interests.
+              </p>
+              <p class="hero__summary">
+                The app reads today&rsquo;s screen time, lets users choose what
+                they want more of, and turns that time into grounded activity
+                ideas across interests like fitness, music, food, travel, and
+                more.
+              </p>
+
+              <div class="hero__actions">
+                <a class="button button--primary" href="#cta"
+                  >See official links</a
+                >
+                <a class="button button--secondary" href="#features"
+                  >Explore features</a
+                >
+              </div>
+
+              <div class="hero__meta" aria-label="Highlights">
+                <span class="meta-chip">On-device screen time privacy</span>
+                <span class="meta-chip">Interest-based activity ideas</span>
+                <span class="meta-chip">No tracking or cookies on this page</span>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+              <div class="hex-cluster">
+                <span class="hex"></span>
+                <span class="hex"></span>
+                <span class="hex"></span>
+                <span class="hex"></span>
+                <span class="hex"></span>
+                <span class="hex"></span>
+              </div>
+
+              <div class="device-frame">
+                <img
+                  src="./assets/play-store/phone-screenshots/phone-screenshot-03-1080x1920.png"
+                  alt="Instead home screen preview"
+                  width="330"
+                  height="587"
+                />
+              </div>
+
+              <div class="floating-card">
+                <strong>Real app direction</strong>
+                <p>
+                  The page styling follows the live app: dark ink surfaces,
+                  warm sand text, mint primary actions, rounded cards, and the
+                  honeycomb interest motif.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--spaced" id="how-it-helps">
+          <div class="container">
+            <div class="section-heading">
+              <h2>How Instead helps reduce screen time</h2>
+              <p>
+                Instead focuses on a simple loop: measure the time already spent
+                on a phone, connect that time to personal interests, and
+                present concrete alternatives that feel more relevant than a
+                generic reminder to put the device down.
+              </p>
+            </div>
+
+            <div class="how-grid">
+              <article class="card">
+                <span class="step-index">1</span>
+                <h3>See today&rsquo;s screen time</h3>
+                <p>
+                  The app can request screen time access to calculate how much
+                  time the user has spent on their phone today.
+                </p>
+              </article>
+
+              <article class="card">
+                <span class="step-index">2</span>
+                <h3>Choose what you want more of</h3>
+                <p>
+                  Users pick interests they want to spend more time on, then
+                  update those selections later if their priorities change.
+                </p>
+              </article>
+
+              <article class="card">
+                <span class="step-index">3</span>
+                <h3>Get alternatives instead</h3>
+                <p>
+                  Instead turns screen time into activity suggestions and lets
+                  users browse more ideas when they want another option.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--spaced" id="features">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Verified features from the app</h2>
+              <p>
+                These features are based on the current codebase and in-app
+                content. Nothing below assumes a Play Store release, a backend,
+                or unverified product behavior.
+              </p>
+            </div>
+
+            <div class="feature-grid">
+              <article class="card">
+                <span class="feature-card__tag">Screen time</span>
+                <h3>Automatic access with a manual fallback</h3>
+                <p>
+                  If screen time cannot be read automatically, the app also
+                  supports entering today&rsquo;s screen time manually for the
+                  session.
+                </p>
+              </article>
+
+              <article class="card">
+                <span class="feature-card__tag">Interests</span>
+                <h3>Pick interests that actually matter to you</h3>
+                <p>
+                  Users can choose from a wide interest catalog, including areas
+                  visible in the app like fitness, music, food and cooking,
+                  travel, art, and more.
+                </p>
+              </article>
+
+              <article class="card">
+                <span class="feature-card__tag">Alternatives</span>
+                <h3>Activity cards instead of vague reminders</h3>
+                <p>
+                  Instead presents specific alternatives with titles,
+                  descriptions, and interest labels so users can quickly switch
+                  from scrolling to a concrete action.
+                </p>
+              </article>
+
+              <article class="card">
+                <span class="feature-card__tag">Fresh ideas</span>
+                <h3>More suggestions over time</h3>
+                <p>
+                  The main experience supports refreshed idea timing and a
+                  &ldquo;load more&rdquo; flow for users who want to keep
+                  exploring additional alternatives.
+                </p>
+              </article>
+
+              <article class="card card--accent">
+                <span class="feature-card__tag">Privacy</span>
+                <h3>Screen time data stays on the device</h3>
+                <p>
+                  The app&rsquo;s permission copy explicitly states that screen
+                  time data stays on the device and is not collected, stored, or
+                  shared by the app.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--spaced" id="cta">
+          <div class="container">
+            <div class="cta-panel">
+              <h2>Official links for store review and public launch</h2>
+              <p>
+                This page can serve as the official website for Instead while
+                the public store listing is being prepared. The legal documents
+                are already live and linked below.
+              </p>
+
+              <div class="cta-panel__actions">
+                <a
+                  class="button button--secondary"
+                  href="https://ogulcandulger.github.io/instead-legal/privacy-policy.html"
+                  >Privacy Policy</a
+                >
+                <a
+                  class="button button--secondary"
+                  href="https://ogulcandulger.github.io/instead-legal/terms.html"
+                  >Terms</a
+                >
+              </div>
+
+              <p class="cta-note">
+                Google Play link not added yet.
+              </p>
+              <!-- Replace this placeholder with your Google Play Store URL when available.
+              Example:
+              <a class="button button--primary" href="https://play.google.com/store/apps/details?id=com.ogulcandulger.instead">Get Instead on Google Play</a>
+              -->
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--spaced" id="support">
+          <div class="container support-grid">
+            <div class="card">
+              <h2>Support and contact</h2>
+              <p>
+                If you need the official legal documents for Instead, use the
+                Privacy Policy and Terms links on this page.
+              </p>
+              <p>
+                A direct public support channel is not published in the current
+                codebase, so this section is intentionally conservative until a
+                final support email or form is ready.
+              </p>
+              <div class="link-list">
+                <a
+                  href="https://ogulcandulger.github.io/instead-legal/privacy-policy.html"
+                  >Privacy Policy</a
+                >
+                <a href="https://ogulcandulger.github.io/instead-legal/terms.html"
+                  >Terms</a
+                >
+              </div>
+              <!-- Optional support contact placeholder:
+              <a href="mailto:support@example.com">support@example.com</a>
+              -->
+            </div>
+
+            <aside class="card card--accent">
+              <h3>Review-friendly summary</h3>
+              <p>
+                App name: Instead
+              </p>
+              <p>
+                Purpose: help users reduce screen time by surfacing alternative
+                activities tied to their interests.
+              </p>
+              <p>
+                Website type: static landing page with no cookies, tracking
+                scripts, external JavaScript, or build step.
+              </p>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <p class="footer-copy">
+            Instead is focused on helping users see what they could do instead
+            of spending more time on their phone.
+          </p>
+          <div class="footer-links">
+            <a
+              href="https://ogulcandulger.github.io/instead-legal/privacy-policy.html"
+              >Privacy Policy</a
+            >
+            <a href="https://ogulcandulger.github.io/instead-legal/terms.html"
+              >Terms</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
